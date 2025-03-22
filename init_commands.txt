@@ -6,4 +6,3 @@ poetry init
 
 Redis client page: https://redis.io/docs/latest/develop/clients/redis-py/
 Boto3 for S3 https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html
-

@@ -1,15 +1,34 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+app = FastAPI()
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# @app.post("/items/")
+# async def create_item(bucket_id: int, item: dict):
+#     """
+#
+#     Put this into Redis
+#     Put this into s3
+#     :param item:
+#     :return:
+#     """
+#     return item
+
+Objects = dict[str, dict]
+
+buckets: dict[int, Objects] = {
+    0: dict([
+        ("test.txt", {1: 2})
+    ]),
+    1: dict([
+        ("margonem.txt", {"weed": 420})
+    ])
+}
+
+@app.get("/items/")
+async def get_item(bucket_id: int, name: str) -> Objects:
+    if bucket_id not in buckets:
+        raise HTTPException(status_code=404, detail="Bucket not found")
+    return buckets[bucket_id]
