@@ -1,0 +1,9 @@
+poetry init
+-> Add all dependencies
+-> setup black, ruff, etc.
+-> Setup fastApi with all of it's dependecies (from documentation page)
+
+
+Redis client page: https://redis.io/docs/latest/develop/clients/redis-py/
+Boto3 for S3 https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html
+
